@@ -16,6 +16,7 @@ spec:
       containers:
       - name: nginx
         image: garlik6/kuber
+        imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: webdav
           mountPath: /var/www/webdav
