@@ -22,15 +22,15 @@ spec:
     matchLabels:
       app: nginx
   serviceName: my-service
-  volumes:
-  - name: config
-    configMap:
-      name: webdav-config
   template:
     metadata:
       labels:
         app: nginx
     spec:
+      volumes:
+      - name: config-volume
+        configMap:
+            name: webdav-config
       containers:
       - name: nginx
         image: docker.io/library/nginx
@@ -40,9 +40,8 @@ spec:
         volumeMounts:
         - name: webdav
           mountPath: /var/www/webdav
-        - name: nginx-conf
+        - name: config-volume
           mountPath: /etc/nginx
-          readOnly: true
   volumeClaimTemplates:
   - metadata:
       name: webdav
