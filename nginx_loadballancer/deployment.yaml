@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: cats-dogs-review-app
-        imagePullPolicy: Never
+        image: docker.io/library/nginx
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
