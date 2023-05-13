@@ -29,11 +29,16 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: garlik6/kuber
+        image: docker.io/library/nginx
         imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
         volumeMounts:
         - name: webdav
           mountPath: /var/www/webdav
+        - name: nginx-conf
+          mountPath: /etc/nginx
+          readOnly: true
   volumeClaimTemplates:
   - metadata:
       name: webdav
