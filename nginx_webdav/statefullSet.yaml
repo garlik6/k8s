@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ng_wd
+        image: garlik6/kuber
         volumeMounts:
         - name: webdav
           mountPath: /var/www/webdav
