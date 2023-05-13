@@ -22,6 +22,10 @@ spec:
     matchLabels:
       app: nginx
   serviceName: my-service
+  volumes:
+  - name: config
+    configMap:
+      name: webdav-config
   template:
     metadata:
       labels:
