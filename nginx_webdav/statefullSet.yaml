@@ -9,6 +9,7 @@ spec:
   - port: 80
     name: web
   clusterIP: None
+  publishNotReadyAddresses: true
   selector:
     app: nginx
 ---
@@ -18,10 +19,11 @@ metadata:
   name: animal-storage
 spec:
   replicas: 2
+  serviceName: nginx
   selector:
     matchLabels:
       app: nginx
-  serviceName: my-service
+  serviceName: nginx
   template:
     metadata:
       labels:
