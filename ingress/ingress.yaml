@@ -11,3 +11,5 @@ spec:
             backend:
               service:
                 name: cats-dogs-review-app
+                port:
+                  number: 80
