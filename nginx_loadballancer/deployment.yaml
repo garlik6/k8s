@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: cats-dogs-review-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: cats-dogs-review-app
@@ -21,7 +21,12 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /etc/nginx
+        - name: config
+          mountPath: /usr/share/nginx/html
       volumes:
       - name: config
         configMap:
           name: loadbalancer-config
+      - name: static
+        configMap:
+          name: html-config
