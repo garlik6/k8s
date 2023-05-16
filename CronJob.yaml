@@ -12,7 +12,7 @@ spec:
           - name: curl-container
             image: appropriate/curl
             command: ["curl"]
-            args: ["-s", "-o", "/dev/null", ""]
+            args: ["-s", "-o", "/dev/null", "192.168.39.144"]
             volumeMounts:
             - name: result
               mountPath: /result
