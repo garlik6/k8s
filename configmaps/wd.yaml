@@ -1,0 +1,475 @@
+apiVersion: v1
+data:
+  fastcgi.conf: |2
+
+    fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+    fastcgi_param  QUERY_STRING       $query_string;
+    fastcgi_param  REQUEST_METHOD     $request_method;
+    fastcgi_param  CONTENT_TYPE       $content_type;
+    fastcgi_param  CONTENT_LENGTH     $content_length;
+
+    fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;
+    fastcgi_param  REQUEST_URI        $request_uri;
+    fastcgi_param  DOCUMENT_URI       $document_uri;
+    fastcgi_param  DOCUMENT_ROOT      $document_root;
+    fastcgi_param  SERVER_PROTOCOL    $server_protocol;
+    fastcgi_param  REQUEST_SCHEME     $scheme;
+    fastcgi_param  HTTPS              $https if_not_empty;
+
+    fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
+    fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
+
+    fastcgi_param  REMOTE_ADDR        $remote_addr;
+    fastcgi_param  REMOTE_PORT        $remote_port;
+    fastcgi_param  SERVER_ADDR        $server_addr;
+    fastcgi_param  SERVER_PORT        $server_port;
+    fastcgi_param  SERVER_NAME        $server_name;
+
+    # PHP only, required if PHP was built with --enable-force-cgi-redirect
+    fastcgi_param  REDIRECT_STATUS    200;
+  fastcgi_params: |2
+
+    fastcgi_param  QUERY_STRING       $query_string;
+    fastcgi_param  REQUEST_METHOD     $request_method;
+    fastcgi_param  CONTENT_TYPE       $content_type;
+    fastcgi_param  CONTENT_LENGTH     $content_length;
+
+    fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;
+    fastcgi_param  REQUEST_URI        $request_uri;
+    fastcgi_param  DOCUMENT_URI       $document_uri;
+    fastcgi_param  DOCUMENT_ROOT      $document_root;
+    fastcgi_param  SERVER_PROTOCOL    $server_protocol;
+    fastcgi_param  REQUEST_SCHEME     $scheme;
+    fastcgi_param  HTTPS              $https if_not_empty;
+
+    fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
+    fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
+
+    fastcgi_param  REMOTE_ADDR        $remote_addr;
+    fastcgi_param  REMOTE_PORT        $remote_port;
+    fastcgi_param  SERVER_ADDR        $server_addr;
+    fastcgi_param  SERVER_PORT        $server_port;
+    fastcgi_param  SERVER_NAME        $server_name;
+
+    # PHP only, required if PHP was built with --enable-force-cgi-redirect
+    fastcgi_param  REDIRECT_STATUS    200;
+  koi-utf: |2
+
+    # This map is not a full koi8-r <> utf8 map: it does not contain
+    # box-drawing and some other characters.  Besides this map contains
+    # several koi8-u and Byelorussian letters which are not in koi8-r.
+    # If you need a full and standard map, use contrib/unicode2nginx/koi-utf
+    # map instead.
+
+    charset_map  koi8-r  utf-8 {
+
+        80  E282AC ; # euro
+
+        95  E280A2 ; # bullet
+
+        9A  C2A0 ;   # &nbsp;
+
+        9E  C2B7 ;   # &middot;
+
+        A3  D191 ;   # small yo
+        A4  D194 ;   # small Ukrainian ye
+
+        A6  D196 ;   # small Ukrainian i
+        A7  D197 ;   # small Ukrainian yi
+
+        AD  D291 ;   # small Ukrainian soft g
+        AE  D19E ;   # small Byelorussian short u
+
+        B0  C2B0 ;   # &deg;
+
+        B3  D081 ;   # capital YO
+        B4  D084 ;   # capital Ukrainian YE
+
+        B6  D086 ;   # capital Ukrainian I
+        B7  D087 ;   # capital Ukrainian YI
+
+        B9  E28496 ; # numero sign
+
+        BD  D290 ;   # capital Ukrainian soft G
+        BE  D18E ;   # capital Byelorussian short U
+
+        BF  C2A9 ;   # (C)
+
+        C0  D18E ;   # small yu
+        C1  D0B0 ;   # small a
+        C2  D0B1 ;   # small b
+        C3  D186 ;   # small ts
+        C4  D0B4 ;   # small d
+        C5  D0B5 ;   # small ye
+        C6  D184 ;   # small f
+        C7  D0B3 ;   # small g
+        C8  D185 ;   # small kh
+        C9  D0B8 ;   # small i
+        CA  D0B9 ;   # small j
+        CB  D0BA ;   # small k
+        CC  D0BB ;   # small l
+        CD  D0BC ;   # small m
+        CE  D0BD ;   # small n
+        CF  D0BE ;   # small o
+
+        D0  D0BF ;   # small p
+        D1  D18F ;   # small ya
+        D2  D180 ;   # small r
+        D3  D181 ;   # small s
+        D4  D182 ;   # small t
+        D5  D183 ;   # small u
+        D6  D0B6 ;   # small zh
+        D7  D0B2 ;   # small v
+        D8  D18C ;   # small soft sign
+        D9  D18B ;   # small y
+        DA  D0B7 ;   # small z
+        DB  D188 ;   # small sh
+        DC  D18D ;   # small e
+        DD  D189 ;   # small shch
+        DE  D187 ;   # small ch
+        DF  D18A ;   # small hard sign
+
+        E0  D0AE ;   # capital YU
+        E1  D090 ;   # capital A
+        E2  D091 ;   # capital B
+        E3  D0A6 ;   # capital TS
+        E4  D094 ;   # capital D
+        E5  D095 ;   # capital YE
+        E6  D0A4 ;   # capital F
+        E7  D093 ;   # capital G
+        E8  D0A5 ;   # capital KH
+        E9  D098 ;   # capital I
+        EA  D099 ;   # capital J
+        EB  D09A ;   # capital K
+        EC  D09B ;   # capital L
+        ED  D09C ;   # capital M
+        EE  D09D ;   # capital N
+        EF  D09E ;   # capital O
+
+        F0  D09F ;   # capital P
+        F1  D0AF ;   # capital YA
+        F2  D0A0 ;   # capital R
+        F3  D0A1 ;   # capital S
+        F4  D0A2 ;   # capital T
+        F5  D0A3 ;   # capital U
+        F6  D096 ;   # capital ZH
+        F7  D092 ;   # capital V
+        F8  D0AC ;   # capital soft sign
+        F9  D0AB ;   # capital Y
+        FA  D097 ;   # capital Z
+        FB  D0A8 ;   # capital SH
+        FC  D0AD ;   # capital E
+        FD  D0A9 ;   # capital SHCH
+        FE  D0A7 ;   # capital CH
+        FF  D0AA ;   # capital hard sign
+    }
+  koi-win: |2
+
+    charset_map  koi8-r  windows-1251 {
+
+        80  88 ; # euro
+
+        95  95 ; # bullet
+
+        9A  A0 ; # &nbsp;
+
+        9E  B7 ; # &middot;
+
+        A3  B8 ; # small yo
+        A4  BA ; # small Ukrainian ye
+
+        A6  B3 ; # small Ukrainian i
+        A7  BF ; # small Ukrainian yi
+
+        AD  B4 ; # small Ukrainian soft g
+        AE  A2 ; # small Byelorussian short u
+
+        B0  B0 ; # &deg;
+
+        B3  A8 ; # capital YO
+        B4  AA ; # capital Ukrainian YE
+
+        B6  B2 ; # capital Ukrainian I
+        B7  AF ; # capital Ukrainian YI
+
+        B9  B9 ; # numero sign
+
+        BD  A5 ; # capital Ukrainian soft G
+        BE  A1 ; # capital Byelorussian short U
+
+        BF  A9 ; # (C)
+
+        C0  FE ; # small yu
+        C1  E0 ; # small a
+        C2  E1 ; # small b
+        C3  F6 ; # small ts
+        C4  E4 ; # small d
+        C5  E5 ; # small ye
+        C6  F4 ; # small f
+        C7  E3 ; # small g
+        C8  F5 ; # small kh
+        C9  E8 ; # small i
+        CA  E9 ; # small j
+        CB  EA ; # small k
+        CC  EB ; # small l
+        CD  EC ; # small m
+        CE  ED ; # small n
+        CF  EE ; # small o
+
+        D0  EF ; # small p
+        D1  FF ; # small ya
+        D2  F0 ; # small r
+        D3  F1 ; # small s
+        D4  F2 ; # small t
+        D5  F3 ; # small u
+        D6  E6 ; # small zh
+        D7  E2 ; # small v
+        D8  FC ; # small soft sign
+        D9  FB ; # small y
+        DA  E7 ; # small z
+        DB  F8 ; # small sh
+        DC  FD ; # small e
+        DD  F9 ; # small shch
+        DE  F7 ; # small ch
+        DF  FA ; # small hard sign
+
+        E0  DE ; # capital YU
+        E1  C0 ; # capital A
+        E2  C1 ; # capital B
+        E3  D6 ; # capital TS
+        E4  C4 ; # capital D
+        E5  C5 ; # capital YE
+        E6  D4 ; # capital F
+        E7  C3 ; # capital G
+        E8  D5 ; # capital KH
+        E9  C8 ; # capital I
+        EA  C9 ; # capital J
+        EB  CA ; # capital K
+        EC  CB ; # capital L
+        ED  CC ; # capital M
+        EE  CD ; # capital N
+        EF  CE ; # capital O
+
+        F0  CF ; # capital P
+        F1  DF ; # capital YA
+        F2  D0 ; # capital R
+        F3  D1 ; # capital S
+        F4  D2 ; # capital T
+        F5  D3 ; # capital U
+        F6  C6 ; # capital ZH
+        F7  C2 ; # capital V
+        F8  DC ; # capital soft sign
+        F9  DB ; # capital Y
+        FA  C7 ; # capital Z
+        FB  D8 ; # capital SH
+        FC  DD ; # capital E
+        FD  D9 ; # capital SHCH
+        FE  D7 ; # capital CH
+        FF  DA ; # capital hard sign
+    }
+  mime.types: |2
+
+    types {
+        text/html                             html htm shtml;
+        text/css                              css;
+        text/xml                              xml;
+        image/gif                             gif;
+        image/jpeg                            jpeg jpg;
+        application/javascript                js;
+        application/atom+xml                  atom;
+        application/rss+xml                   rss;
+
+        text/mathml                           mml;
+        text/plain                            txt;
+        text/vnd.sun.j2me.app-descriptor      jad;
+        text/vnd.wap.wml                      wml;
+        text/x-component                      htc;
+
+        image/png                             png;
+        image/tiff                            tif tiff;
+        image/vnd.wap.wbmp                    wbmp;
+        image/x-icon                          ico;
+        image/x-jng                           jng;
+        image/x-ms-bmp                        bmp;
+        image/svg+xml                         svg svgz;
+        image/webp                            webp;
+
+        application/font-woff                 woff;
+        application/java-archive              jar war ear;
+        application/json                      json;
+        application/mac-binhex40              hqx;
+        application/msword                    doc;
+        application/pdf                       pdf;
+        application/postscript                ps eps ai;
+        application/rtf                       rtf;
+        application/vnd.apple.mpegurl         m3u8;
+        application/vnd.ms-excel              xls;
+        application/vnd.ms-fontobject         eot;
+        application/vnd.ms-powerpoint         ppt;
+        application/vnd.wap.wmlc              wmlc;
+        application/vnd.google-earth.kml+xml  kml;
+        application/vnd.google-earth.kmz      kmz;
+        application/x-7z-compressed           7z;
+        application/x-cocoa                   cco;
+        application/x-java-archive-diff       jardiff;
+        application/x-java-jnlp-file          jnlp;
+        application/x-makeself                run;
+        application/x-perl                    pl pm;
+        application/x-pilot                   prc pdb;
+        application/x-rar-compressed          rar;
+        application/x-redhat-package-manager  rpm;
+        application/x-sea                     sea;
+        application/x-shockwave-flash         swf;
+        application/x-stuffit                 sit;
+        application/x-tcl                     tcl tk;
+        application/x-x509-ca-cert            der pem crt;
+        application/x-xpinstall               xpi;
+        application/xhtml+xml                 xhtml;
+        application/xspf+xml                  xspf;
+        application/zip                       zip;
+
+        application/octet-stream              bin exe dll;
+        application/octet-stream              deb;
+        application/octet-stream              dmg;
+        application/octet-stream              iso img;
+        application/octet-stream              msi msp msm;
+
+        application/vnd.openxmlformats-officedocument.wordprocessingml.document    docx;
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet          xlsx;
+        application/vnd.openxmlformats-officedocument.presentationml.presentation  pptx;
+
+        audio/midi                            mid midi kar;
+        audio/mpeg                            mp3;
+        audio/ogg                             ogg;
+        audio/x-m4a                           m4a;
+        audio/x-realaudio                     ra;
+
+        video/3gpp                            3gpp 3gp;
+        video/mp2t                            ts;
+        video/mp4                             mp4;
+        video/mpeg                            mpeg mpg;
+        video/quicktime                       mov;
+        video/webm                            webm;
+        video/x-flv                           flv;
+        video/x-m4v                           m4v;
+        video/x-mng                           mng;
+        video/x-ms-asf                        asx asf;
+        video/x-ms-wmv                        wmv;
+        video/x-msvideo                       avi;
+    }
+  nginx.conf: |
+    worker_processes 1;
+
+    events { worker_connections 1024; }
+
+    http {
+      include /etc/nginx/mime.types;
+      default_type application/octet-stream;
+
+      sendfile on;
+      keepalive_timeout 65;
+
+      server {
+        listen 80;
+        server_name localhost;
+
+        root /var/www/webdav;
+        autoindex on;
+
+        location / {
+          # Enable WebDAV
+          dav_methods PUT DELETE;
+          dav_access user:rw group:rw all:r;
+          create_full_put_path on;
+        }
+      }
+    }
+  proxy_params: |
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+  scgi_params: |2
+
+    scgi_param  REQUEST_METHOD     $request_method;
+    scgi_param  REQUEST_URI        $request_uri;
+    scgi_param  QUERY_STRING       $query_string;
+    scgi_param  CONTENT_TYPE       $content_type;
+
+    scgi_param  DOCUMENT_URI       $document_uri;
+    scgi_param  DOCUMENT_ROOT      $document_root;
+    scgi_param  SCGI               1;
+    scgi_param  SERVER_PROTOCOL    $server_protocol;
+    scgi_param  REQUEST_SCHEME     $scheme;
+    scgi_param  HTTPS              $https if_not_empty;
+
+    scgi_param  REMOTE_ADDR        $remote_addr;
+    scgi_param  REMOTE_PORT        $remote_port;
+    scgi_param  SERVER_PORT        $server_port;
+    scgi_param  SERVER_NAME        $server_name;
+  uwsgi_params: |2
+
+    uwsgi_param  QUERY_STRING       $query_string;
+    uwsgi_param  REQUEST_METHOD     $request_method;
+    uwsgi_param  CONTENT_TYPE       $content_type;
+    uwsgi_param  CONTENT_LENGTH     $content_length;
+
+    uwsgi_param  REQUEST_URI        $request_uri;
+    uwsgi_param  PATH_INFO          $document_uri;
+    uwsgi_param  DOCUMENT_ROOT      $document_root;
+    uwsgi_param  SERVER_PROTOCOL    $server_protocol;
+    uwsgi_param  REQUEST_SCHEME     $scheme;
+    uwsgi_param  HTTPS              $https if_not_empty;
+
+    uwsgi_param  REMOTE_ADDR        $remote_addr;
+    uwsgi_param  REMOTE_PORT        $remote_port;
+    uwsgi_param  SERVER_PORT        $server_port;
+    uwsgi_param  SERVER_NAME        $server_name;
+  win-utf: "# This map is not a full windows-1251 <> utf8 map: it does not\n# contain
+    Serbian and Macedonian letters.\tIf you need a full map,\n# use contrib/unicode2nginx/win-utf
+    map instead.\n\ncharset_map\twindows-1251\tutf-8 {\n\n\t82\tE2809A; # single low-9
+    quotation mark\n\n\t84\tE2809E; # double low-9 quotation mark\n\t85\tE280A6; #
+    ellipsis\n\t86\tE280A0; # dagger\n\t87\tE280A1; # double dagger\n\t88\tE282AC;
+    # euro\n\t89\tE280B0; # per mille\n\n\t91\tE28098; # left single quotation mark\n\t92\tE28099;
+    # right single quotation mark\n\t93\tE2809C; # left double quotation mark\n\t94\tE2809D;
+    # right double quotation mark\n\t95\tE280A2; # bullet\n\t96\tE28093; # en dash\n\t97\tE28094;
+    # em dash\n\n\t99\tE284A2; # trade mark sign\n\n\tA0\tC2A0;   # &nbsp;\n\tA1\tD18E;
+    \  # capital Byelorussian short U\n\tA2\tD19E;   # small Byelorussian short u\n\n\tA4\tC2A4;
+    \  # currency sign\n\tA5\tD290;   # capital Ukrainian soft G\n\tA6\tC2A6;   #
+    borken bar\n\tA7\tC2A7;   # section sign\n\tA8\tD081;   # capital YO\n\tA9\tC2A9;
+    \  # (C)\n\tAA\tD084;   # capital Ukrainian YE\n\tAB\tC2AB;   # left-pointing
+    double angle quotation mark\n\tAC\tC2AC;   # not sign\n\tAD\tC2AD;   # soft hypen\n\tAE\tC2AE;
+    \  # (R)\n\tAF\tD087;   # capital Ukrainian YI\n\n\tB0\tC2B0;   # &deg;\n\tB1\tC2B1;
+    \  # plus-minus sign\n\tB2\tD086;   # capital Ukrainian I\n\tB3\tD196;   # small
+    Ukrainian i\n\tB4\tD291;   # small Ukrainian soft g\n\tB5\tC2B5;   # micro sign\n\tB6\tC2B6;
+    \  # pilcrow sign\n\tB7\tC2B7;   # &middot;\n\tB8\tD191;   # small yo\n\tB9\tE28496;
+    # numero sign\n\tBA\tD194;   # small Ukrainian ye\n\tBB\tC2BB;   # right-pointing
+    double angle quotation mark\n\n\tBF\tD197;   # small Ukrainian yi\n\n\tC0\tD090;
+    \  # capital A\n\tC1\tD091;   # capital B\n\tC2\tD092;   # capital V\n\tC3\tD093;
+    \  # capital G\n\tC4\tD094;   # capital D\n\tC5\tD095;   # capital YE\n\tC6\tD096;
+    \  # capital ZH\n\tC7\tD097;   # capital Z\n\tC8\tD098;   # capital I\n\tC9\tD099;
+    \  # capital J\n\tCA\tD09A;   # capital K\n\tCB\tD09B;   # capital L\n\tCC\tD09C;
+    \  # capital M\n\tCD\tD09D;   # capital N\n\tCE\tD09E;   # capital O\n\tCF\tD09F;
+    \  # capital P\n\n\tD0\tD0A0;   # capital R\n\tD1\tD0A1;   # capital S\n\tD2\tD0A2;
+    \  # capital T\n\tD3\tD0A3;   # capital U\n\tD4\tD0A4;   # capital F\n\tD5\tD0A5;
+    \  # capital KH\n\tD6\tD0A6;   # capital TS\n\tD7\tD0A7;   # capital CH\n\tD8\tD0A8;
+    \  # capital SH\n\tD9\tD0A9;   # capital SHCH\n\tDA\tD0AA;   # capital hard sign\n\tDB\tD0AB;
+    \  # capital Y\n\tDC\tD0AC;   # capital soft sign\n\tDD\tD0AD;   # capital E\n\tDE\tD0AE;
+    \  # capital YU\n\tDF\tD0AF;   # capital YA\n\n\tE0\tD0B0;   # small a\n\tE1\tD0B1;
+    \  # small b\n\tE2\tD0B2;   # small v\n\tE3\tD0B3;   # small g\n\tE4\tD0B4;   #
+    small d\n\tE5\tD0B5;   # small ye\n\tE6\tD0B6;   # small zh\n\tE7\tD0B7;   # small
+    z\n\tE8\tD0B8;   # small i\n\tE9\tD0B9;   # small j\n\tEA\tD0BA;   # small k\n\tEB\tD0BB;
+    \  # small l\n\tEC\tD0BC;   # small m\n\tED\tD0BD;   # small n\n\tEE\tD0BE;   #
+    small o\n\tEF\tD0BF;   # small p\n\n\tF0\tD180;   # small r\n\tF1\tD181;   # small
+    s\n\tF2\tD182;   # small t\n\tF3\tD183;   # small u\n\tF4\tD184;   # small f\n\tF5\tD185;
+    \  # small kh\n\tF6\tD186;   # small ts\n\tF7\tD187;   # small ch\n\tF8\tD188;
+    \  # small sh\n\tF9\tD189;   # small shch\n\tFA\tD18A;   # small hard sign\n\tFB\tD18B;
+    \  # small y\n\tFC\tD18C;   # small soft sign\n\tFD\tD18D;   # small e\n\tFE\tD18E;
+    \  # small yu\n\tFF\tD18F;   # small ya\n}\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-16T12:18:44Z"
+  name: webdav-config
+  namespace: default
+  resourceVersion: "43233"
+  uid: 31506341-4dc0-430d-9dff-367e71df695f

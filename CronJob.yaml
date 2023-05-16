@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: curl-job
 spec:
-  schedule: "*/5 * * * *"
+  schedule: "* * * * *"
   jobTemplate:
     spec:
       template:
@@ -11,8 +11,11 @@ spec:
           containers:
           - name: curl-container
             image: appropriate/curl
-            command: ["curl"]
-            args: ["-s", "-o", "/dev/null", "192.168.39.144"]
+            command:
+            - /bin/sh
+            - -c
+            - date; curl 192.168.49.2/ ; curl 192.168.49.2/dogs/ ; curl 192.168.49.2/cats/
+            args: ["/bin/sh", "-c", ""]
             volumeMounts:
             - name: result
               mountPath: /result
