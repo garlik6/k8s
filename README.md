@@ -1,5 +1,5 @@
 ```
 minikube start
-minikube enable addons ingress
+minikube addons enable ingress
 kubectl apply -f k8s --recursive
 ```
