@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: CronJob
+metadata:
+  name: curl-job
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: appropriate/curl
+            command: ["curl"]
+            args: ["-s", "-o", "/dev/null", ""]
+            volumeMounts:
+            - name: result
+              mountPath: /result
+          restartPolicy: OnFailure
+          volumes:
+          - name: result
+            emptyDir: {}
